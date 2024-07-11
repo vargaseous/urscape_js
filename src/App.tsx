@@ -1,24 +1,27 @@
-import { useState } from 'react';
+import { StoreProvider, store } from './Stores/RootStore';
+import { spy } from 'mobx';
+
 import Map from './Map';
-import Gui from './gui';
-import { Layer } from './DataLayers/Layer';
-import LayerController from './LayerController';
+import Gui from './Gui';
+import DataLoader from './DataLoader';
 
 import './App.css';
 
-function App() {
-  const [layers, setLayers] = useState<Layer[]>([]);
+if (import.meta.env.DEV) {
+  spy(event => {
+    if (event.type === "action") {
+      console.debug("[mobx event]", event.name, ...event.arguments);
+    }
+  })
+}
 
+function App() {
   return (
-    <>
-      <Map layers={layers} />
-      <LayerController
-        layers={layers}
-        setLayers={setLayers} />
-      <Gui
-        layers={layers}
-        setLayers={setLayers} />
-    </>
+    <StoreProvider value={store}>
+      <Map />
+      <Gui />
+      <DataLoader />
+    </StoreProvider>
   )
 }
 
