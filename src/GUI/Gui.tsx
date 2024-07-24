@@ -54,12 +54,12 @@ const Gui = observer(() => {
         </div>
         <div className="left-layers">
           <div className="header"> {"DataLayers"} </div>
-          <div className="container">
+          <div className="container-layers">
             { dataStore.dataLayers.map((layer) => addLayerButton(layer)) }
           </div>
           <div className="left-locations">
             <div className="header"> {"Locations"} </div>
-            <div className="container">
+            <div className="container-sites">
               { dataStore.sites.map((site) => addSiteButton(site)) }
             </div>
           </div>

@@ -31,9 +31,17 @@
   border-top: 0.5px solid rgb(255, 255, 255);
   border-bottom: 0.5px solid rgb(255, 255, 255);
 }
-.container {
-  top: 30px;
-  padding-top: 5px;
+.container-layers {
+  /* top: 30px;
+  padding-top: 5px; */
+  overflow: scroll;
+  height: calc(100% - 71px);
+}
+.container-sites {
+  /* top: 30px;
+  padding-top: 5px; */
+  overflow: scroll;
+  height: calc(100% - 36px); ;
 }
 
 .layer-button {
