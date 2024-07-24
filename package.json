@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lru-cache": "^11.0.0",
     "maplibre-gl": "^4.3.2",
     "mobx": "^6.12.5",
     "mobx-react": "^9.1.1",

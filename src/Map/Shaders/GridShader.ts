@@ -112,7 +112,7 @@ export class GridShader extends Shader {
     );
   }
 
-  public setValues(gl: WebGLContext, values: number[], countX: number, countY: number) {
+  public setValues(gl: WebGLContext, values: Float32Array, countX: number, countY: number) {
     const name = "u_Values";
     const index = gl.getUniformLocation(this.getProgram(), name)!;
 
@@ -131,7 +131,7 @@ export class GridShader extends Shader {
     );
   }
 
-  public setProjection(gl: WebGLContext, values: number[]) {
+  public setProjection(gl: WebGLContext, values: Float32Array) {
     const name = "u_Projection";
     const index = gl.getUniformLocation(this.getProgram(), name)!;
 

@@ -1,15 +1,15 @@
-import { makeAutoObservable, observable } from "mobx"
+import { makeAutoObservable } from "mobx"
 import { v4 as uuid } from "uuid";
 import { Site } from "./Site";
-import { Patch } from "./Patch";
 import { Color } from "../Map/Color";
+import { PatchTree } from "./PatchTree";
 
 export class DataLayer {
   public site: Site;
   public id: string;
   public name: string;
   public tint: Color;
-  public patches: Patch[];
+  public patches: PatchTree;
   public selected: boolean;
 
   constructor(site: Site, name: string, tint: Color) {
@@ -17,12 +17,12 @@ export class DataLayer {
     this.id = uuid();
     this.name = name;
     this.tint = tint;
-    this.patches = [];
+    this.patches = new PatchTree();
     this.selected = false;
 
     makeAutoObservable(this, {
-      patches: observable.shallow,
-      getMinMaxValue: false // exclude
+      patches: false,
+      getMinMaxValue: false
     });
   }
 
@@ -42,7 +42,7 @@ export class DataLayer {
     let min = +Infinity;
     let max = -Infinity;
 
-    for (const patch of this.patches) {
+    for (const patch of this.patches.values()) {
       if (!patch.data) continue;
       min = patch.data.minValue < min ? patch.data.minValue : min;
       max = patch.data.maxValue > max ? patch.data.maxValue : max;

@@ -195,7 +195,7 @@ export abstract class Shader {
    * @param params - An object containing texture parameters.
    * @throws Throws an error if the texture object cannot be created.
    */
-  protected setTextureData(gl: WebGLContext, values: number[], params: TextureParams) {
+  protected setTextureData(gl: WebGLContext, values: Float32Array, params: TextureParams) {
     // Retrieve the texture from the map or create a new one if it doesn't exist
     const texture = this.textures[params.name]?.texture ?? gl.createTexture();
     if (!texture) throw Error("An error occurred while creating a texture object");
@@ -215,14 +215,14 @@ export abstract class Shader {
     gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
     gl.texImage2D(
       gl.TEXTURE_2D,
-      0,                        // Mipmap level
-      params.format[1],         // Internal format
-      params.width,             // Width of the texture
-      params.height,            // Height of the texture
-      0,                        // Border width (always zero)
-      params.format[0],         // Format of the pixel data
-      gl.FLOAT,                 // Type of the pixel data
-      new Float32Array(values)  // Pixel data
+      0,                  // Mipmap level
+      params.format[1],   // Internal format
+      params.width,       // Width of the texture
+      params.height,      // Height of the texture
+      0,                  // Border width (always zero)
+      params.format[0],   // Format of the pixel data
+      gl.FLOAT,           // Type of the pixel data
+      values              // Pixel data
     );
 
     // Set texture parameters for filtering and wrapping

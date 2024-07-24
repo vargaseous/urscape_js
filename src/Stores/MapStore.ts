@@ -1,41 +1,60 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
+import { MapCache } from "./MapCache";
 import { MapLayer } from "../Map/MapLayer";
 import { GridLayer } from "../Map/GridLayer";
-import { GridPatch } from "../DataLayers/GridPatch";
+import { GridPatch } from "../Data/GridPatch";
+import { AreaBounds } from "../Data/DataUtils";
+import { MapState } from "../Map/MapState";
+import { getPatchLevel } from "../Map/MapUtils";
 
 export class MapStore {
   public rootStore: RootStore
   public mapLayers: Map<string, MapLayer>
+  public mapCache: MapCache
+  public mapState: MapState
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
     this.mapLayers = new Map();
-    makeAutoObservable(this);
+    this.mapCache = new MapCache(100);
+    this.mapState = {
+      bounds: AreaBounds.inf(),
+      zoom: 0
+    };
+
+    makeAutoObservable(this, {
+      mapLayers: observable.shallow,
+      mapCache: false
+    });
   }
 
-  public addMapLayer(mapLayer: MapLayer) {
-    this.mapLayers.set(mapLayer.id, mapLayer);
-  }
-
-  public removeMapLayer(mapLayer: MapLayer) {
-    this.mapLayers.delete(mapLayer.id);
+  public async updateMapState(state: MapState) {
+    this.mapState = state;
+    this.updateMapLayers();
   }
 
   public updateMapLayers() {
     const dataStore = this.rootStore.dataStore;
     const dataLayers = dataStore.dataLayers;
-
-    // Remove inactive maplayers
-    for (const mapLayer of this.mapLayers.values()) {
-      const gridLayer = mapLayer as GridLayer;
-      if (!gridLayer.dataLayer.active) {
-        this.removeMapLayer(mapLayer);
-      }
-    }
+    const level = getPatchLevel(this.mapState.zoom);
 
     const activeDataLayers = dataLayers
       .filter(layer => layer.active);
+
+    const visiblePatches = activeDataLayers
+      .flatMap(layer => layer.patches.getArea(this.mapState.bounds, level))
+
+    // Hide inactive maplayers
+    for (const mapLayer of this.mapLayers.values()) {
+      const patch = mapLayer.patch;
+      if (!mapLayer.dataLayer.active || !visiblePatches.includes(patch)) {
+        // Store inactive layers in cache
+        mapLayer.active = false;
+        this.mapCache.set(patch.id, mapLayer);
+        this.mapLayers.delete(patch.id);
+      }
+    }
 
     let offsetIndex = 0;
     const offCenter = 0.18;
@@ -46,25 +65,32 @@ export class MapStore {
 
     for (const dataLayer of activeDataLayers) {
       const index = offsetIndex++;
-      const patches = dataLayer.patches as GridPatch[];
+      const visiblePatches = dataLayer.patches
+        .getArea(this.mapState.bounds, level) as GridPatch[];
 
-      for (const patch of patches) {
-        const { header, data } = patch;
+      for (const patch of visiblePatches) {
+        const { id, data } = patch;
 
         if (!data) {
-          // TODO: Request patch data
-          console.warn("Patch has no data");
+          dataStore.patchStore.request(patch.source, patch.info);
           continue;
         }
 
-        const id = header.name + header.patch;
         let layer = this.mapLayers.get(id) as GridLayer;
 
-        if (!layer) {
-          layer = new GridLayer(id, dataLayer, data);
-          this.addMapLayer(layer);
+        // Fetch layer from cache
+        if (!layer && this.mapCache.has(id)) {
+          layer = this.mapCache.get(id) as GridLayer;
+          this.mapLayers.set(id, layer);
         }
 
+        // otherwise create new layer
+        else if (!layer) {
+          layer = new GridLayer(id, dataLayer, patch);
+          this.mapLayers.set(id, layer);
+        }
+
+        layer.active = true;
         layer.offset = [
           offsetDistance * Math.cos(index * offsetRadians),
           offsetDistance * Math.sin(index * offsetRadians)

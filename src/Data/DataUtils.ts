@@ -6,18 +6,23 @@ export interface BoundsLike {
 }
 
 export class AreaBounds {
-  public static inf = () => new AreaBounds(-Infinity, -Infinity, Infinity, Infinity);
+  public static inf = () => new AreaBounds({
+    north: -Infinity,
+    east: -Infinity,
+    south: Infinity,
+    west: Infinity
+  });
 
   public north: number;
   public east: number;
   public south: number;
   public west: number;
 
-  constructor(north: number, east: number, south: number, west: number) {
-    this.north = north;
-    this.east = east;
-    this.south = south;
-    this.west = west;
+  constructor(bounds: BoundsLike) {
+    this.north = bounds.north;
+    this.east = bounds.east;
+    this.south = bounds.south;
+    this.west = bounds.west;
   }
 
   public add(bounds: BoundsLike) {
@@ -25,6 +30,20 @@ export class AreaBounds {
     this.east = Math.max(this.east, bounds.east);
     this.south = Math.min(this.south, bounds.south);
     this.west = Math.min(this.west, bounds.west);
+  }
+
+  public intersect(other: BoundsLike): boolean {
+    return this.east > other.west &&
+      this.west < other.east &&
+      this.north > other.south &&
+      this.south < other.north;
+  }
+
+  public inside(other: BoundsLike): boolean {
+    return this.east <= other.east &&
+      this.west >= other.west &&
+      this.north <= other.north &&
+      this.south >= other.south;
   }
 
   public get center(): [number, number] {

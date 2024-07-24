@@ -1,56 +1,54 @@
 import { parse } from "papaparse";
 import { BinaryReader } from "./BinaryReader";
-import { getMinMax } from "../../DataLayers/DataUtils";
-import { GridData } from "../../DataLayers/GridData";
-import { PatchHeader, PatchLevel } from "../../DataLayers/Patch";
-import { PatchRequest, PatchResponse } from "../../DataLayers/PatchRequest";
-import { PatchDataSection, PatchMetadata } from "../../DataLayers/PatchData";
+import { getMinMax } from "../../Data/DataUtils";
+import { GridData } from "../../Data/GridData";
+import { PatchData, PatchDataSection, PatchMetadata } from "../../Data/PatchData";
 
-export async function parseGrid(request: PatchRequest): Promise<PatchResponse> {
-  const { url, filename } = request;
-
-  const header = parseHeader(filename);
-  if (!header) throw Error("Invalid filename format");
-
-  const data = await parseBIN(url);
-
-  return { request, header, data };
+export type ParseRequest = {
+  id: string
+  array: ArrayBuffer
 }
 
-export function parseHeader(filename: string): PatchHeader | null {
-  const regex = new RegExp("^(.*?)_(.*?)_(.*?)@(.*?)_(.*?)_(.*?)\\..+$");
-  const values = regex.exec(filename);
+export type ParseResponse = {
+  request: ParseRequest
+  data?: PatchData
+  error?: Error
+}
 
-  if (!values) return null;
+self.onmessage = async (e: MessageEvent<ParseRequest>) => {
+  const request = e.data;
+  let response: ParseResponse;
 
-  const name = values[1];
-  const level = values[2] as PatchLevel;
-  const site = values[3];
-  const patch = parseInt(values[4]);
-  const date = new Date(); // TODO
-
-  return {
-    level,
-    name,
-    site,
-    patch,
-    filename,
-    date,
+  try {
+    response = {
+      request: request,
+      data: await parseGrid(request.array)
+    };
+  } catch (e) {
+    response = {
+      request: request,
+      error: e as Error
+    };
   }
+
+  self.postMessage(response);
+};
+
+export async function parseGrid(array: ArrayBuffer): Promise<GridData> {
+  return await parseBIN(array);
 }
 
-export async function parseBIN(url: string): Promise<GridData> {
-  const response = await fetch(url);
-  if (!response.ok) throw Error(response.statusText);
-
-  const data = await response.arrayBuffer();
-  const buffer = Buffer.from(data);
-
+export async function parseBIN(array: ArrayBuffer): Promise<GridData> {
+  const buffer = Buffer.from(array);
   const reader = new BinaryReader(buffer);
 
   const readHeader = () => {
-    reader.readUint32(); // BIN_TOKEN
-    reader.readUint32(); // BIN_VERSION
+    if (reader.readUint32() !== 0x600DF00D)
+      throw Error("Invalid BIN_TOKEN");
+
+    if (reader.readUint32() !== 0x0000000D)
+      throw Error("Invalid BIN_VERSION");
+
     const west = reader.readDouble();
     const east = reader.readDouble();
     const north = reader.readDouble();
@@ -104,7 +102,7 @@ export async function parseBIN(url: string): Promise<GridData> {
   }
 
   const readValues = (count: number) => {
-    const values = new Array<number>(count);
+    const values = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
       values[i] = reader.readFloat();
@@ -115,9 +113,9 @@ export async function parseBIN(url: string): Promise<GridData> {
 
   const readMask = (count: number) => {
     const hasMask = reader.readBoolean()
-    if (!hasMask) return [];
+    if (!hasMask) return new Uint8Array(0);
 
-    const mask = new Array<number>(count);
+    const mask = new Uint8Array(count);
 
     for (let i = 0; i < count; i++) {
       mask[i] = reader.readUint8();
@@ -128,7 +126,7 @@ export async function parseBIN(url: string): Promise<GridData> {
 
   const readDistribution = () => {
     const count = reader.readUint8();
-    const distribution = new Array<number>(count);
+    const distribution = new Uint32Array(count);
 
     for (let i = 0; i < count; i++) {
       distribution[i] = reader.readUint32();
@@ -220,7 +218,8 @@ export async function parseCSV(url: string): Promise<GridData> {
             south: parseFloat(metadata["South"]),
             west: parseFloat(metadata["West"]),
           },
-          values, mask,
+          values: new Float32Array(values),
+          mask: new Uint8Array(mask),
           countX: parseInt(metadata["Count X"]),
           countY: parseInt(metadata["Count Y"]),
           minValue: min,
@@ -233,9 +232,3 @@ export async function parseCSV(url: string): Promise<GridData> {
     });
   })
 }
-
-self.onmessage = async (e: MessageEvent<PatchRequest>) => {
-  const request = e.data;
-  const response = await parseGrid(request);
-  self.postMessage(response);
-};

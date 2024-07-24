@@ -2,10 +2,9 @@ import { makeAutoObservable, reaction } from "mobx";
 import { Color } from "../Map/Color";
 import { RootStore } from "./RootStore";
 import { PatchStore } from "./PatchStore";
-import { Patch } from "../DataLayers/Patch";
-import { Site } from "../DataLayers/Site";
-import { DataLayer } from "../DataLayers/DataLayer";
-import { patchRequest } from "../DataLayers/PatchRequest";
+import { Patch } from "../Data/Patch";
+import { Site } from "../Data/Site";
+import { DataLayer } from "../Data/DataLayer";
 
 export class DataStore {
   public rootStore: RootStore
@@ -31,31 +30,23 @@ export class DataStore {
   }
 
   public init() {
-    const site = new Site("World");
-    site.selected = true;
-    this.sites.push(site);
+    const world = new Site("World");
+    world.selected = true;
+    this.sites.push(world);
 
-    const density = new DataLayer(site, "PopulationDensity", Color.red);
-    const cropland = new DataLayer(site, "Cropland", Color.green);
-    site.layers.push(density, cropland);
+    const density = new DataLayer(world, "Density", Color.red);
+    const cropland = new DataLayer(world, "Cropland", Color.green);
+    world.layers.push(density, cropland);
 
-    for (let i = 0; i < 32; i++) {
-      this.patchStore.requestPatch(patchRequest(cropland.id, `global/Cropland_B_World@${i}_12_grid.bin`));
-    }
+    const singapore = new Site("Singapore");
+    this.sites.push(singapore);
 
-    for (let i = 0; i < 23; i++) {
-      this.patchStore.requestPatch(patchRequest(density.id, `global/Density_B_World@${i}_15_grid.bin`));
-    }
+    const agriculture = new DataLayer(singapore, "BuiltUp", Color.darkYellow);
+    const density2 = new DataLayer(singapore, "Density", Color.red);
+    const gardens = new DataLayer(singapore, "CommunityGardens", Color.green);
+    singapore.layers.push(agriculture, density2, gardens);
 
-    const siteSingapore = new Site("Singapore");
-    this.sites.push(siteSingapore);
-    const agriculture = new DataLayer(siteSingapore, "BuidtUp", Color.darkYellow);
-    const density2 = new DataLayer(siteSingapore, "Density Population", Color.red);
-    const gardens = new DataLayer(siteSingapore, "Commity Gardens", Color.green);
-    site.layers.push(agriculture,density2,gardens);
-    this.patchStore.requestPatch(patchRequest(agriculture.id, `Singapore/BuiltUp_D_Singapore@0_2020_grid.bin`));
-    this.patchStore.requestPatch(patchRequest(density2.id, `Singapore/Density_D_Singapore@0_2020_grid.bin`));
-    this.patchStore.requestPatch(patchRequest(gardens.id, `Singapore/CommunityGardens_D_Singapore@0_2022_grid.bin`));
+    this.patchStore.loadAll();
   }
 
   public addSite(site: Site) {
@@ -72,11 +63,24 @@ export class DataStore {
   }
 
   public pushPatch(patch: Patch) {
-    patch.layer.patches.push(patch);
+    let dataLayer = this.dataLayers.find(layer =>
+      layer.name == patch.info.name && layer.site.name == patch.info.site);
 
-    if (patch.data) {
-      patch.layer.site.bounds.add(patch.data.bounds);
+    if (!dataLayer) {
+      let site = this.sites.find(site => site.name == patch.info.site);
+
+      if (!site) {
+        site = new Site(patch.info.site);
+        this.addSite(site);
+      }
+
+      dataLayer = new DataLayer(site, patch.info.name, Color.random());
+      this.addDataLayer(dataLayer);
     }
+
+    // TODO: Update active map layers with new patch data
+    dataLayer.patches.push(patch);
+    dataLayer.site.bounds.add(patch.bounds);
 
     this.rootStore.mapStore.updateMapLayers();
   }

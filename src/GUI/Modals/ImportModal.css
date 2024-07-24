@@ -1,0 +1,23 @@
+.modal-dialog {
+  width: 350px;
+  height: 300px;
+}
+
+.import-button {
+  display: flex;
+  margin: 10px 7px;
+  padding: 10px 10px;
+  background-color: black;
+  border: 0px solid;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.import-button:hover {
+  border-radius: 10px;
+  background-color: rgb(64, 64, 64);
+}

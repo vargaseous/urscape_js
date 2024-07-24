@@ -1,26 +1,31 @@
+import { useEffect } from 'react';
+import { configure, spy } from 'mobx';
 import { StoreProvider, store } from './Stores/RootStore';
-import { spy } from 'mobx';
 
 import Map from './Map';
-import Gui from './Gui';
-import DataLoader from './DataLoader';
+import Gui from './GUI/Gui';
 
 import './App.css';
 
-if (import.meta.env.DEV) {
-  spy(event => {
-    if (event.type === "action") {
-      console.debug("[mobx event]", event.name, ...event.arguments);
-    }
-  })
-}
-
 function App() {
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      configure({
+        enforceActions: "always"
+      });
+
+      return spy(event => {
+        if (event.type === "action" && !event.name.startsWith("updateMap")) {
+          console.debug("[mobx event]", event.name, ...event.arguments);
+        }
+      });
+    }
+  }, []);
+
   return (
     <StoreProvider value={store}>
       <Map />
       <Gui />
-      <DataLoader />
     </StoreProvider>
   )
 }

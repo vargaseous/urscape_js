@@ -1,21 +1,22 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { observer } from 'mobx-react';
-import { useStore } from './Stores/RootStore';
-import { Site } from './DataLayers/Site';
-import { DataLayer } from './DataLayers/DataLayer';
+import { useStore } from '../Stores/RootStore';
+import { Site } from '../Data/Site';
+import { DataLayer } from '../Data/DataLayer';
+
+import ImportModal from './Modals/ImportModal';
 
 import './Gui.css';
 
 const Gui = observer(() => {
   const { dataStore } = useStore();
+  const [importOpen, setImportOpen] = useState(false);
 
-  const onLayerClicked = useCallback((dataLayer: DataLayer) => {
-    dataLayer.toggleSelect();
-  }, [])
+  const openImport = useCallback(() => setImportOpen(true), []);
+  const closeImport = useCallback(() => setImportOpen(false), []);
 
-  const onSiteClicked = useCallback((site: Site) => {
-    dataStore.selectSite(site);
-  }, [dataStore])
+  const onLayerClicked = useCallback((dataLayer: DataLayer) => dataLayer.toggleSelect(), []);
+  const onSiteClicked = useCallback((site: Site) => dataStore.selectSite(site), [dataStore]);
 
   const addLayerButton = (layer: DataLayer) => {
     if (layer.hidden) return;
@@ -34,9 +35,23 @@ const Gui = observer(() => {
     );
   };
 
+  const addImport = () => {
+    return (
+      <>
+        <button className="layer-button" onClick={openImport}>
+          Import
+        </button>
+        <ImportModal isOpen={importOpen} onClose={closeImport}/>
+      </>
+    );
+  };
+
   const drawGUI = () => {
     return (
       <div className="left-panel">
+        <div className="left-import">
+          { addImport() }
+        </div>
         <div className="left-layers">
           <div className="header"> {"DataLayers"} </div>
           <div className="container">

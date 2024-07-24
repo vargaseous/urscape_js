@@ -1,42 +1,48 @@
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { DataStore } from "./DataStore";
-import { PatchRequest, PatchResponse } from "../DataLayers/PatchRequest";
+import { DataSource } from "../Data/DataSource";
+import { StaticSource } from "../Data/DataSources/StaticSource";
+import { LocalSource } from "../Data/DataSources/LocalSource";
+import { PatchInfo } from "../Data/Patch";
 
 export class PatchStore {
   public dataStore: DataStore
-  public patchRequests: Map<string, PatchRequest>
+  public sources: DataSource[];
+  public requests: Set<string>;
 
   constructor(dataStore: DataStore) {
     this.dataStore = dataStore;
-    this.patchRequests = new Map();
-
-    makeAutoObservable(this, {
-      patchRequests: observable.shallow
-    });
+    this.sources = [new LocalSource(), new StaticSource()];
+    this.requests = new Set();
+    makeAutoObservable(this);
   }
 
-  public requestPatch(request: PatchRequest) {
-    this.patchRequests.set(request.id, request);
+  public async request(source: DataSource, info: PatchInfo) {
+    if (this.requests.has(info.filename)) return;
+    this.requests.add(info.filename);
+
+    try {
+      const patch = await source.getPatch(info);
+      this.dataStore.pushPatch(patch);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.requests.delete(info.filename);
+    }
   }
 
-  public completePatchRequest(response: PatchResponse) {
-    const { request, header, data } = response;
-    this.patchRequests.delete(request.id);
+  public async load(source: DataSource) {
+    const dataStore = this.dataStore;
+    const patchInfos = await source.getAvailablePatches();
 
-    const dataLayer = this.dataStore.dataLayers
-      .find(x => x.id == request.layerId);
-
-    if (!dataLayer) {
-      console.warn("DataLayer was disposed before Patch request completed")
-      return;
+    for (const info of patchInfos) {
+      const patch = await source.getPatch(info);
+      delete patch.data; // Load without data to save memory
+      dataStore.pushPatch(patch);
     }
+  }
 
-    const patch = {
-      layer: dataLayer,
-      header: header,
-      data: data,
-    }
-
-    this.dataStore.pushPatch(patch);
+  public loadAll() {
+    return Promise.all(this.sources.map(source => this.load(source)));
   }
 }

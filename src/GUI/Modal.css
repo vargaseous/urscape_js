@@ -1,0 +1,32 @@
+.modal-dialog {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 2%;
+  top: 1%;
+  display: flex;
+  background-color: black;
+  border: 0px solid;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-close:hover {
+  color: gray;
+}

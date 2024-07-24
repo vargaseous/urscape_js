@@ -1,8 +1,8 @@
 import { PatchData } from "./PatchData";
 
 export interface GridData extends PatchData {
-  values: number[];
-  mask: number[];
+  values: Float32Array;
+  mask: Uint8Array;
   countX: number;
   countY: number;
 }
