@@ -7,7 +7,7 @@ import { DataStore } from "../Stores/DataStore";
 import { GridLayer } from "../Map/Layers/GridLayer";
 import { PatchTree, ObservablePatchTree } from "./PatchTree";
 import { getPatchLevel } from "../Map/MapUtils";
-import { PatchData, PatchMetadata } from "./PatchData";
+// import { PatchData, PatchMetadata } from "./PatchData";
 
 export type DataLayerObject = ReturnType<DataLayer["toObject"]>;
 
