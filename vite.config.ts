@@ -6,7 +6,4 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 export default defineConfig({
   plugins: [react(), nodePolyfills()],
   base: "/jsPoC/",
-  worker: {
-    format: "es"
-  },
 })
