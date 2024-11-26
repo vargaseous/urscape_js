@@ -1,0 +1,568 @@
+<mxfile host="65bd71144e">
+    <diagram id="BClis62ARx7J1oJiT1-s" name="Stránka-1">
+        <mxGraphModel dx="6841" dy="3341" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="udVzsaCJ5JT554v93i70-2" value="Data Loading" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-3480" y="280" width="1250" height="1300" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node61" target="node7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="342" y="245"/>
+                            <mxPoint x="630" y="245"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node61" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataLayerSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; getDataLayers(dataStore: DataStore): Promise&amp;lt;DataLayer[]&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="130" y="318" width="423" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="node7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; checkAvailability(): Promise&amp;lt;boolean&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="489" y="130" width="282" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node18" target="node7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="904" y="245"/>
+                            <mxPoint x="630" y="245"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PatchSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; getAvailablePatches(): Promise&amp;lt;PatchInfo[]&amp;gt;&lt;br/&gt; getPatch(info: PatchInfo, includeData: boolean): Promise&amp;lt;Patch | undefined&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="640" y="305" width="527" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node53" target="node61" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node53" target="node18" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="342" y="455"/>
+                            <mxPoint x="750" y="455"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node53" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LocalSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; storePatch(patch: Patch): Promise&amp;lt;void&amp;gt;&lt;br/&gt; storeDataLayer(dataLayer: DataLayer): Promise&amp;lt;void&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="150.5" y="568" width="382" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node10" target="node53" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="802" y="765"/>
+                            <mxPoint x="342" y="765"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;InMemorySource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; patches: Map&amp;lt;string, Patch&amp;gt;&lt;br/&gt; dataLayers: Map&amp;lt;string, DataLayerObject&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; storePatch(patch: Patch): Promise&amp;lt;void&amp;gt;&lt;br/&gt; checkAvailability(): Promise&amp;lt;boolean&amp;gt;&lt;br/&gt; getAvailablePatches(): Promise&amp;lt;PatchInfo[]&amp;gt;&lt;br/&gt; getPatch(info: PatchInfo): Promise&amp;lt;Patch | undefined&amp;gt;&lt;br/&gt; storeDataLayer(dataLayer: DataLayer): Promise&amp;lt;void&amp;gt;&lt;br/&gt; getDataLayers(dataStore: DataStore): Promise&amp;lt;DataLayer[]&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="590" y="840" width="423" height="285" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node54" target="node53" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node54" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;IndexedDbSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; dbPromise: Promise&amp;lt;IDBDatabase&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; checkAvailability(): Promise&amp;lt;boolean&amp;gt;&lt;br/&gt; storePatch(patch: Patch): Promise&amp;lt;void&amp;gt;&lt;br/&gt; getAvailablePatches(): Promise&amp;lt;PatchInfo[]&amp;gt;&lt;br/&gt; getPatch(info: PatchInfo): Promise&amp;lt;Patch | undefined&amp;gt;&lt;br/&gt; storeDataLayer(dataLayer: DataLayer): Promise&amp;lt;void&amp;gt;&lt;br/&gt; getDataLayers(dataStore: DataStore): Promise&amp;lt;DataLayer[]&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="130" y="840" width="423" height="285" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-2" source="node23" target="node18" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="904" y="475"/>
+                            <mxPoint x="904" y="475"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node23" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;StaticSource&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; checkAvailability(): Promise&amp;lt;boolean&amp;gt;&lt;br/&gt; getAvailablePatches(): Promise&amp;lt;PatchInfo[]&amp;gt;&lt;br/&gt; getPatch(info: PatchInfo, includeData: boolean): Promise&amp;lt;Patch&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-2" vertex="1">
+                    <mxGeometry x="678" y="555" width="451" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-24" value="State Management" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-3480" y="-1030" width="1250" height="1300" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-24" source="node29" target="node39" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node29" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PatchStore&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(dataStore: DataStore): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; dataStore: DataStore&lt;br/&gt; requests: Set&amp;lt;string&amp;gt;&lt;br/&gt; loading: boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(): Promise&amp;lt;void&amp;gt;&lt;br/&gt; request(source: PatchSource, info: PatchInfo): Promise&amp;lt;void&amp;gt;&lt;br/&gt; store(patch: Patch): Promise&amp;lt;void&amp;gt;&lt;br/&gt; load(source: PatchSource): Promise&amp;lt;void&amp;gt;&lt;br/&gt; preload(source: PatchSource): Promise&amp;lt;void&amp;gt;&lt;br/&gt; loadAll(sources: PatchSource[]): Promise&amp;lt;void&amp;gt;&lt;br/&gt; preloadAll(sources: PatchSource[]): Promise&amp;lt;void&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="142" y="820" width="434" height="341" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-24" source="node0" target="node55" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="892" y="290"/>
+                            <mxPoint x="625" y="290"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MapStore&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(rootStore: RootStore): &lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; rootStore: RootStore&lt;br&gt; mapLayers: Map&amp;lt;string, MapLayer&amp;gt;&lt;br&gt; mapCache: MapCache&lt;br&gt; mapState: MapState&lt;br&gt; mapControllers: MapController[]&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; updateMapState(state: MapState): Promise&amp;lt;void&amp;gt;&lt;br&gt; mapUpdate(): void (change in layrers visibility)&lt;br&gt; mapRedraw(): void (change in layer values)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="712.5" y="350" width="360" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-24" source="node39" target="node55" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="359" y="290"/>
+                            <mxPoint x="625" y="290"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node39" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataStore&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(rootStore: RootStore): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; rootStore: RootStore&lt;br/&gt; patchStore: PatchStore&lt;br/&gt; sources: DataSource[]&lt;br/&gt; sites: Site[]&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(): Promise&amp;lt;void&amp;gt;&lt;br/&gt; load(): Promise&amp;lt;void&amp;gt;&lt;br/&gt; addSite(site: Site): void&lt;br/&gt; selectSite(site: Site): void&lt;br/&gt; addDataLayer(dataLayer: DataLayer): void&lt;br/&gt; pushPatch(patch: Patch): void&lt;br/&gt; getDataLayer(info: PatchInfo): DataLayer&lt;br/&gt; saveDataLayer(dataLayer: DataLayer): Promise&amp;lt;void&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; dataLayers: DataLayer[]&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="170" y="350" width="378" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="node55" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;RootStore&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; mapStore: MapStore&lt;br/&gt; dataStore: DataStore&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="537.5" y="110" width="175" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-24" source="node40" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node40" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MapState&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; zoom: number&lt;br/&gt; bounds: AreaBounds&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="680" y="713" width="159" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-24" source="node9" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MapCache&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(size: number): &lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-24" vertex="1">
+                    <mxGeometry x="890" y="713" width="216" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-29" value="&lt;div&gt;Map Layers&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-2220" y="-1030" width="1230" height="1540" as="geometry"/>
+                </mxCell>
+                <mxCell id="node44" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MapController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; active: boolean&lt;br/&gt; setActive: (active: boolean) =&amp;gt; void&lt;br/&gt; onMapUpdate: () =&amp;gt; void&lt;br/&gt; onMapRedraw: () =&amp;gt; void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="480" y="100" width="268" height="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-29" source="node45" target="node44" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node45" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(mapStore: MapStore): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; active: boolean&lt;br/&gt; mapStore: MapStore&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; setActive(active: boolean): void&lt;br/&gt; onMapUpdate(): void&lt;br/&gt; onMapRedraw(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="310" y="380" width="264" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-29" source="node12" target="node44" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(mapStore: MapStore): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; active: boolean&lt;br/&gt; mapStore: MapStore&lt;br/&gt; oldGridLayers: GridLayer[]&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; setActive(active: boolean): void&lt;br/&gt; onMapUpdate(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="640" y="380" width="264" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-29" source="node49" target="node63" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node49" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursLayer&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(grids: GridPatch[]): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; id: string&lt;br/&gt; type: &amp;quot;custom&amp;quot;&lt;br/&gt; renderingMode: &amp;quot;2d&amp;quot;&lt;br/&gt; active: boolean&lt;br/&gt; grids: GridPatch[]&lt;br/&gt; map: maplibregl.Map&lt;br/&gt; shader: ContoursShader&lt;br/&gt; compute: ContoursComputeShader&lt;br/&gt; countX: number&lt;br/&gt; countY: number&lt;br/&gt; bounds: AreaBounds&lt;br/&gt; recalculate: boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; recalculateContours(): void&lt;br/&gt; onAdd(map: maplibregl.Map, gl: WebGLContext): void&lt;br/&gt; onRemove(_map: maplibregl.Map, gl: WebGLContext): void&lt;br/&gt; render(gl: WebGLRenderingContext | WebGL2RenderingContext, mvp: glm.mat4): void&lt;br/&gt; runCompute(gl: WebGLContext): void&lt;br/&gt; runShader(gl: WebGLContext, mvp: glm.mat4): void&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; patches: GridPatch[]&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="120" y="909" width="482" height="551" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-29" source="node4" target="node63" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridLayer&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(layer: DataLayer, grid: GridPatch): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; id: string&lt;br/&gt; type: &amp;quot;custom&amp;quot;&lt;br/&gt; renderingMode: &amp;quot;2d&amp;quot;&lt;br/&gt; active: boolean&lt;br/&gt; offset: glm.vec2&lt;br/&gt; layer: DataLayer&lt;br/&gt; grid: GridPatch&lt;br/&gt; shader: GridShader&lt;br/&gt; map: maplibregl.Map&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; onAdd(map: maplibregl.Map, gl: WebGLContext): void&lt;br/&gt; onRemove(_map: maplibregl.Map, gl: WebGLContext): void&lt;br/&gt; render(gl: WebGLRenderingContext | WebGL2RenderingContext, mvp: glm.mat4): void&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; dataLayer: DataLayer&lt;br/&gt; patch: GridPatch&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="634" y="909" width="482" height="441" as="geometry"/>
+                </mxCell>
+                <mxCell id="node63" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MapLayer&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; active: boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-29" vertex="1">
+                    <mxGeometry x="540" y="720" width="139" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-34" value="Map Rendering" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-980" y="-1030" width="1630" height="2080" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=classic;endFill=1;dashed=1;" parent="udVzsaCJ5JT554v93i70-34" source="node32" target="node17" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="390" y="670"/>
+                            <mxPoint x="390" y="210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-56" value="Every shader uses one program" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-55" vertex="1" connectable="0">
+                    <mxGeometry x="0.0257" y="4" relative="1" as="geometry">
+                        <mxPoint x="104" y="204" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-57" value="&lt;div&gt;Programs represent compiled WebGL&amp;nbsp;&lt;/div&gt;&lt;div&gt;fragment and vertex shaders&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-55" vertex="1" connectable="0">
+                    <mxGeometry x="0.7334" y="4" relative="1" as="geometry">
+                        <mxPoint x="14" y="-25" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node32" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Shader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(program: Program): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; program: Program&lt;br/&gt; vao: WebGLVertexArrayObject&lt;br/&gt; attributes: Record&amp;lt;string, ShaderAttribute&amp;gt;&lt;br/&gt; textures: Record&amp;lt;string, ShaderTexture&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(gl: WebGLContext): void&lt;br/&gt; getProgram(): WebGLProgram&lt;br/&gt; delete(gl: WebGLContext): void&lt;br/&gt; bind(gl: WebGLContext): void&lt;br/&gt; unbind(gl: WebGLContext): void&lt;br/&gt; borrowTexture(gl: WebGLContext, shader: Shader, name: string): void&lt;br/&gt; swapTextures(srcName: string, dstName: string): void&lt;br/&gt; setAttributeData(gl: WebGLContext, values: number[], params: AttributeParams): void&lt;br/&gt; setTextureData(gl: WebGLContext, values: ArrayBufferView | null, params: TextureParams): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="579.5" y="560" width="477" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node1" target="node32" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="813" y="1100"/>
+                            <mxPoint x="813" y="1100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursShader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; mvp: glm.ReadonlyMat4&lt;br/&gt; camera: glm.ReadonlyVec3&lt;br/&gt; center: glm.ReadonlyVec3&lt;br/&gt; count: glm.ReadonlyVec2&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; bind(gl: WebGLContext): void&lt;br/&gt; setPositions(gl: WebGLContext, values: glm.vec3[]): void&lt;br/&gt; setUVs(gl: WebGLContext, values: glm.vec2[]): void&lt;br/&gt; setProjection(gl: WebGLContext, values: Float32Array): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="602.5" y="1510" width="421" height="286" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="udVzsaCJ5JT554v93i70-34" source="node2" target="node32" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1303" y="1030"/>
+                            <mxPoint x="830" y="1030"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ComputeShader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(program: Program): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; framebuffer: WebGLFramebuffer&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(gl: WebGLContext): void&lt;br/&gt; bind(gl: WebGLContext): void&lt;br/&gt; unbind(gl: WebGLContext): void&lt;br/&gt; delete(gl: WebGLContext): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="1180" y="1140" width="250" height="216" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node52" target="node32" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="322" y="1260"/>
+                            <mxPoint x="813" y="1260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node52" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridShader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; mvp: glm.ReadonlyMat4&lt;br/&gt; camera: glm.ReadonlyVec3&lt;br/&gt; center: glm.ReadonlyVec3&lt;br/&gt; offset: glm.ReadonlyVec2&lt;br/&gt; tint: glm.ReadonlyVec4&lt;br/&gt; count: glm.ReadonlyVec2&lt;br/&gt; density: glm.ReadonlyVec2&lt;br/&gt; minmax: glm.ReadonlyVec2&lt;br/&gt; filter: glm.ReadonlyVec2&lt;br/&gt; mask: number | null&lt;br/&gt; zoom: number&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; bind(gl: WebGLContext): void&lt;br/&gt; setPositions(gl: WebGLContext, values: glm.vec3[]): void&lt;br/&gt; setUVs(gl: WebGLContext, values: glm.vec2[]): void&lt;br/&gt; setValues(gl: WebGLContext, values: Float32Array, countX: number, countY: number): void&lt;br/&gt; setProjection(gl: WebGLContext, values: Float32Array): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="93" y="1510" width="458" height="466" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node38" target="node2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node38" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursComputeShader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; count: glm.ReadonlyVec2&lt;br/&gt; start: glm.ReadonlyVec2&lt;br/&gt; scale: glm.ReadonlyVec2&lt;br/&gt; offset: glm.ReadonlyVec2&lt;br/&gt; minmax: glm.ReadonlyVec2&lt;br/&gt; filter: glm.ReadonlyVec2&lt;br/&gt; mask: number | null&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(gl: WebGLContext): void&lt;br/&gt; bind(gl: WebGLContext): void&lt;br/&gt; draw(gl: WebGLContext, countX: number, countY: number): void&lt;br/&gt; clear(gl: WebGLContext, value: GLclampf, countX: number, countY: number): void&lt;br/&gt; setValues(gl: WebGLContext, values: Float32Array, countX: number, countY: number): void&lt;br/&gt; setContours(gl: WebGLContext, values: Float32Array | null, countX: number, countY: number): void&lt;br/&gt; setPositions(gl: WebGLContext, values: glm.vec3[]): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="1073" y="1510" width="464" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="node17" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Program&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(vertexSource: string, fragmentSource: string): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; vertexSource: string&lt;br/&gt; fragmentSource: string&lt;br/&gt; program: WebGLProgram | null&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; init(gl: WebGLContext): void&lt;br/&gt; get(): WebGLProgram&lt;br/&gt; createProgram(gl: WebGLContext): WebGLProgram&lt;br/&gt; createShader(gl: WebGLContext, source: string, type: number): WebGLShader&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="547" y="80" width="536" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node60" target="node17" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="582" y="380"/>
+                            <mxPoint x="830" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node60" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursComputeProgram&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="462" y="420" width="241" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node51" target="node17" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="830" y="390"/>
+                            <mxPoint x="830" y="390"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node51" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ContoursProgram&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="741.5" y="420" width="171" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-34" source="node34" target="node17" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1017" y="380"/>
+                            <mxPoint x="830" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node34" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridProgram&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-34" vertex="1">
+                    <mxGeometry x="952" y="420" width="131" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="node44" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2330" y="-830"/>
+                            <mxPoint x="-2330" y="-550"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-60" value="MapControllers change and control map state" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-59" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1058" y="5" relative="1" as="geometry">
+                        <mxPoint x="197" y="-25" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node21" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Site&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(name: string): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; name: string&lt;br/&gt; bounds: AreaBounds&lt;br/&gt; layers: DataLayer[]&lt;br/&gt; selected: boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="-4025" y="-950" width="213" height="178" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="node6" target="node21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-63" value="Site can contain many DataLayers" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-62" vertex="1" connectable="0">
+                    <mxGeometry x="0.1995" y="-4" relative="1" as="geometry">
+                        <mxPoint x="95" y="41" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataLayer&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(store: DataStore, site: Site, name: string, tint: Color): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; store: DataStore&lt;br/&gt; site: Site&lt;br/&gt; id: string&lt;br/&gt; name: string&lt;br/&gt; tint: Color&lt;br/&gt; metadata: DataLayerMetadata&lt;br/&gt; patches: PatchTree&lt;br/&gt; minmax: [number, number]&lt;br/&gt; filter: [number, number]&lt;br/&gt; selected: boolean&lt;br/&gt; filtered: boolean&lt;br/&gt; colored: boolean&lt;br/&gt; expanded: boolean&lt;br/&gt; informed: boolean&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; pushPatch(patch: Patch): void&lt;br/&gt; setFilter(min: number, max: number): void&lt;br/&gt; toggleSelect(): void&lt;br/&gt; toggleFilter(): void&lt;br/&gt; toggleColor(): void&lt;br/&gt; toggleInfo(): void&lt;br/&gt; setTint(color: Color): void&lt;br/&gt; setMetadata(metadata: DataLayerMetadata): void&lt;br/&gt; recalculateMinMax(): void&lt;br/&gt; toObject(): {site: string, metadata: DataLayerMetad…&lt;br/&gt; fromObject(dataStore: DataStore, object: DataLayerObject): DataLayer&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; active: boolean&lt;br/&gt; hidden: boolean&lt;br/&gt; loaded: boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="-4160" y="-670" width="483" height="744" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-67" value="Data Layers" style="swimlane;whiteSpace=wrap;html=1;fontStyle=4" parent="1" vertex="1">
+                    <mxGeometry x="-4840" y="-1030" width="1350" height="1840" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-67" source="node22" target="node57" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="715.2941176470588" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="732" y="1200"/>
+                            <mxPoint x="140" y="1200"/>
+                            <mxPoint x="140" y="709"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-78" value="All patches are stored in PatchTree (for efficient lookup)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-77" vertex="1" connectable="0">
+                    <mxGeometry x="-0.6151" y="4" relative="1" as="geometry">
+                        <mxPoint x="-132" y="-19" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node22" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Patch&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(info: PatchInfo, source?: PatchSource): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; info: PatchInfo&lt;br/&gt; data: PatchData&lt;br/&gt; bounds: AreaBounds&lt;br/&gt; source: PatchSource&lt;br/&gt; dataLayer: DataLayer&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; toObject(): {data: PatchData | undefined, bounds: A…&lt;br/&gt; fromObject(source: PatchSource, object: PatchObject): Patch&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; id: string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="517.5" y="1290" width="428" height="299" as="geometry"/>
+                </mxCell>
+                <mxCell id="node35" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PatchData&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; metadata: PatchMetadata&lt;br/&gt; bounds: PatchBounds&lt;br/&gt; minValue: number&lt;br/&gt; maxValue: number&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="240" y="1366.5" width="204" height="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-67" source="node26" target="node66" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-67" source="node26" target="node22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node26" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridPatch&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; data: GridData&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="665" y="1638" width="133" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-67" source="node66" target="node35" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node66" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridData&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; values: Float32Array&lt;br/&gt; mask: number | null&lt;br/&gt; countX: number&lt;br/&gt; countY: number&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="256" y="1599" width="172" height="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;" parent="udVzsaCJ5JT554v93i70-67" source="node35" target="node22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="udVzsaCJ5JT554v93i70-67" source="node13" target="node57" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ObservablePatchTree&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; atom: IAtom&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; push(patch: Patch): void&lt;br/&gt; getArea(bounds: AreaBounds, level: PatchLevel): Patch[]&lt;br/&gt; values(): Patch[]&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="240" y="894" width="401" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="node57" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PatchTree&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; level: PatchLevel&lt;br/&gt; nodes: PatchTree[]&lt;br/&gt; bounds: AreaBounds&lt;br/&gt; patch: Patch&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; push(patch: Patch): void&lt;br/&gt; getArea(bounds: AreaBounds, level: PatchLevel): Patch[]&lt;br/&gt; values(): Patch[]&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="240" y="574" width="401" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="node42" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DataLayerMetadata&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; displayName: string&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="455" y="420" width="186" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="udVzsaCJ5JT554v93i70-67" source="node20" target="node22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node20" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PatchInfo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; level: PatchLevel&lt;br/&gt; name: string&lt;br/&gt; site: string&lt;br/&gt; index: number&lt;br/&gt; filename: string&lt;br/&gt; date: Date&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="udVzsaCJ5JT554v93i70-67" vertex="1">
+                    <mxGeometry x="990" y="1348" width="133" height="183" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" parent="1" source="node39" target="node21" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-3400" y="-550"/>
+                            <mxPoint x="-3400" y="-861"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="node57" target="node6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-4200" y="-321"/>
+                            <mxPoint x="-4200" y="-321"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="node7" target="node39" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-3400" y="444"/>
+                            <mxPoint x="-3400" y="-540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="node63" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2330" y="-276"/>
+                            <mxPoint x="-2330" y="-540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;" parent="1" source="node63" target="node32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-87" value="MapLayers are used in shaders to render in maplibre-gl" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="udVzsaCJ5JT554v93i70-86" vertex="1" connectable="0">
+                    <mxGeometry x="0.4884" y="4" relative="1" as="geometry">
+                        <mxPoint y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="node42" target="node6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-4292" y="-630"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-1" value="User Interface" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-3480" y="-2240" width="1250" height="1200" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-2" target="z4KXvKS0HiufvVy1GPtC-12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="855" y="240"/>
+                            <mxPoint x="625" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-2" value="&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Map&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="800" y="290" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="node8" target="z4KXvKS0HiufvVy1GPtC-2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="966" y="380"/>
+                            <mxPoint x="855" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-8" value="Listens to static events (screenshots, redraws)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-7" vertex="1" connectable="0">
+                    <mxGeometry x="0.2213" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="372" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="node8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;EventBus&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; eventMap: Record&amp;lt;keyof T, Set&amp;lt;(...args: never[]) …&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; emit(event: K, args: any): void&lt;br/&gt; emitAction(event: K, args: any): void&lt;br/&gt; on(event: K, callback: T[K]): () =&amp;gt; void&lt;br/&gt; off(event: K, callback: T[K]): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="780" y="920" width="371" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-12" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;App&lt;/font&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="569.9999999999995" y="100" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-15" target="z4KXvKS0HiufvVy1GPtC-12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="415" y="240"/>
+                            <mxPoint x="625" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-15" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;GUI&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="360" y="290" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-20" target="z4KXvKS0HiufvVy1GPtC-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-20" value="&lt;b style=&quot;font-size: 14px;&quot;&gt;Toolbox&lt;/b&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="160" y="460" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-24" target="z4KXvKS0HiufvVy1GPtC-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-24" value="&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Modal&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="550" y="460" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-26" target="z4KXvKS0HiufvVy1GPtC-20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-26" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;ContoursTool&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="90" y="580" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-29" target="z4KXvKS0HiufvVy1GPtC-20" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="285" y="545"/>
+                            <mxPoint x="215" y="545"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-29" target="node8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="285" y="1010"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-37" value="Dispatches mapScreenshot, mapTiffExport" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-36" vertex="1" connectable="0">
+                    <mxGeometry x="-0.528" y="-3" relative="1" as="geometry">
+                        <mxPoint x="378" y="154" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-29" value="&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;ExportTool&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="230" y="580" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="z4KXvKS0HiufvVy1GPtC-1" source="z4KXvKS0HiufvVy1GPtC-31" target="z4KXvKS0HiufvVy1GPtC-24" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-31" value="&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;ImportModal&lt;/b&gt;&lt;/font&gt;" style="html=1;whiteSpace=wrap;" parent="z4KXvKS0HiufvVy1GPtC-1" vertex="1">
+                    <mxGeometry x="550" y="580" width="110" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.484;entryY=1.007;entryDx=0;entryDy=0;dashed=1;entryPerimeter=0;" parent="1" source="node0" target="node8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2520" y="-910"/>
+                            <mxPoint x="-2520" y="-910"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-10" value="Dispatches mapUpdate, mapRedraw" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-9" vertex="1" connectable="0">
+                    <mxGeometry x="0.7045" y="1" relative="1" as="geometry">
+                        <mxPoint x="-11" y="-21" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="z4KXvKS0HiufvVy1GPtC-2" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2280" y="-1925"/>
+                            <mxPoint x="-2280" y="-950"/>
+                            <mxPoint x="-2498" y="-950"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-19" value="Reacts to state changes (mapLayers, mapState)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-18" vertex="1" connectable="0">
+                    <mxGeometry x="0.6369" y="4" relative="1" as="geometry">
+                        <mxPoint x="10" y="-994" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-33" value="Web Workers" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-4840" y="-2240" width="1350" height="1200" as="geometry"/>
+                </mxCell>
+                <mxCell id="udVzsaCJ5JT554v93i70-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="z4KXvKS0HiufvVy1GPtC-33" source="node64" target="node37" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="node64" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;BinaryReader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; constructor(buffer: Buffer): &lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; buffer: Buffer&lt;br/&gt; offset: number&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; seek(offset: number): void&lt;br/&gt; readString(): string&lt;br/&gt; readBoolean(): boolean&lt;br/&gt; readUint32(): number&lt;br/&gt; readInt32(): number&lt;br/&gt; readInt8(): number&lt;br/&gt; readUint8(): number&lt;br/&gt; readFloat(): number&lt;br/&gt; readDouble(): number&lt;br/&gt; decodeULEB128(): number&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; byteOffset: number&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="z4KXvKS0HiufvVy1GPtC-33" vertex="1">
+                    <mxGeometry x="854.5" y="566" width="221" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="node37" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridParser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; parseGrid(request: ParseRequest): Promise&amp;lt;GridData&amp;gt;&lt;br/&gt; parseTIFF(request: ParseRequest): Promise&amp;lt;GridData&amp;gt;&lt;br/&gt; parseBIN(request: ParseRequest): Promise&amp;lt;GridData&amp;gt;&lt;br/&gt; parseCSV(request: ParseRequest): Promise&amp;lt;GridData&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="z4KXvKS0HiufvVy1GPtC-33" vertex="1">
+                    <mxGeometry x="770" y="340" width="390" height="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="node16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;GridExporter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0 0 0 4px;line-height:1.6;&quot;&gt; exportTIFF(request: ExportTiffRequest): Promise&amp;lt;ArrayBuffer&amp;gt;&lt;br/&gt; exportDataTIFF(request: ExportDataTiffRequest): Promise&amp;lt;ArrayBuffer&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=14;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;" parent="z4KXvKS0HiufvVy1GPtC-33" vertex="1">
+                    <mxGeometry x="130" y="340" width="497" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="z4KXvKS0HiufvVy1GPtC-31" target="node37" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2875" y="-1520"/>
+                            <mxPoint x="-3600" y="-1520"/>
+                            <mxPoint x="-3600" y="-1827"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-35" value="Uses GridParser and pushes result to PatchStore" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-34" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2525" y="-1" relative="1" as="geometry">
+                        <mxPoint x="224" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="z4KXvKS0HiufvVy1GPtC-26" target="node0" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-3335" y="-950"/>
+                            <mxPoint x="-2540" y="-950"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="z4KXvKS0HiufvVy1GPtC-39" value="Has control over ContoursController" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="z4KXvKS0HiufvVy1GPtC-38" vertex="1" connectable="0">
+                    <mxGeometry x="0.412" y="4" relative="1" as="geometry">
+                        <mxPoint x="-463" y="-6" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="KBpqSQ_R69gUOc1DPDg--1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="z4KXvKS0HiufvVy1GPtC-2" target="node16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-2625" y="-1460"/>
+                            <mxPoint x="-3550" y="-1460"/>
+                            <mxPoint x="-3550" y="-1960"/>
+                            <mxPoint x="-4150" y="-1960"/>
+                            <mxPoint x="-4150" y="-1853"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="KBpqSQ_R69gUOc1DPDg--2" value="Uses GridExporter to export MapLayers to GeoTIFF" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="KBpqSQ_R69gUOc1DPDg--1" connectable="0" vertex="1">
+                    <mxGeometry x="-0.4674" y="-2" relative="1" as="geometry">
+                        <mxPoint x="126" y="-8" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

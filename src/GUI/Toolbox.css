@@ -1,0 +1,108 @@
+.toolbox {
+  position: absolute;
+  bottom: 0px;
+  left: 200px;
+  height: 20%;
+  width: calc(100% - 200px);
+  background-color: black;
+  border: 0.5px solid rgb(255, 255, 255);
+}
+
+.toolbox-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbox-panel-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.toolbox-panel-tabs {
+  color: rgb(255, 255, 255);
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+
+.toolbox-panel-tab {
+  color: white;
+  margin: 0 0 10px 0;
+  height: 100%;
+  border: 0px solid rgb(255, 255, 255);
+  border-right: 1px solid rgb(255, 255, 255);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.toolbox-panel-tab-active {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  margin: 0 0 10px 0;
+  height: 100%;
+  border: 0px solid rgb(255, 255, 255);
+  border-right: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.toolbox-panel-content {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+
+.toolbox-panel-content-item {
+  /* padding: 50px; */
+  /* margin: 25px;
+  border-radius: 20px; */
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.toolbox-icon {
+ 
+  width :10vh;
+  height :10vh;
+  background-color: rgb(0, 0, 0);
+  margin-bottom : 5px;
+}
+.toolbox-button {
+  margin-left: 13px;
+  color: aliceblue;
+  border: 0px solid;
+  background-color: rgb(0, 0, 0);
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center-align content horizontally */
+  cursor: pointer; /* Optional: Add a pointer cursor for better UX */
+}
+.close-button {
+
+  color: aliceblue;
+  border: 0px solid;
+  background-color:rgb(0, 0, 0);
+
+  align-items: right; /* Center-align content horizontally */
+  cursor: pointer; /* Optional: Add a pointer cursor for better UX */
+}
+ 
+.placeholder {
+  color: rgb(255, 255, 255);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.disabled {
+display: none;
+}

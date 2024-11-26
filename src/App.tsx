@@ -15,7 +15,7 @@ function App() {
       });
 
       return spy(event => {
-        if (event.type === "action" && !event.name.startsWith("updateMap")) {
+        if (event.type === "action" && !event.name.match("[Uu]pdate")) {
           console.debug("[mobx event]", event.name, ...event.arguments);
         }
       });

@@ -1,6 +1,9 @@
-import { DataSource } from "./DataSource";
+import { DataLayer } from "./DataLayer";
+import { PatchSource } from "./DataSource";
 import { AreaBounds } from "./DataUtils";
 import { PatchData } from "./PatchData";
+
+export type PatchObject = ReturnType<Patch["toObject"]>;
 
 export const PatchConstants = {
   PATCH_PATH: "./data/"
@@ -12,7 +15,7 @@ export const PatchLevelZoomRanges: [number, number][] = [
   [7, 11],
   [11, 16],
   [16, 20],
-  [20, 22]
+  [20, 25]
 ];
 
 export enum PatchLevel { A, B, C, D, E, F }
@@ -23,18 +26,18 @@ export type PatchInfo = {
   site: string;
   index: number;
   filename: string;
-  date: Date;
+  date: number;
 }
 
 export class Patch {
   public info: PatchInfo;
   public data?: PatchData;
-  public bounds: AreaBounds;
-  public source: DataSource;
+  public bounds?: AreaBounds;
+  public source?: PatchSource;
+  public dataLayer?: DataLayer;
 
-  constructor(source: DataSource, info: PatchInfo, bounds: AreaBounds) {
+  constructor(info: PatchInfo, source?: PatchSource) {
     this.info = info;
-    this.bounds = bounds;
     this.source = source;
   }
 
@@ -43,5 +46,20 @@ export class Patch {
       + this.info.name
       + this.info.level
       + this.info.index;
+  }
+
+  public toObject() {
+    return {
+      info: this.info,
+      data: this.data,
+      bounds: this.bounds
+    }
+  }
+
+  public static fromObject(source: PatchSource, object: PatchObject) {
+    const patch = new Patch(object.info, source);
+    patch.data = object.data;
+    patch.bounds = object.bounds;
+    return patch;
   }
 }

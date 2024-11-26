@@ -7,21 +7,12 @@ export class BinaryReader {
     this.offset = 0;
   }
 
-  private decodeULEB128() {
-    let result = 0;
-    let shift = 0;
-    let length = 0;
-    let byte = 0x80;
+  public get byteOffset() {
+    return this.offset;
+  }
 
-    for (; (byte & 0x80) !== 0; shift += 7) {
-        byte = this.buffer[this.offset + length];
-        result |= (byte & 0x7F) << shift;
-        length++;
-    }
-
-    this.offset += length;
-
-    return result;
+  public seek(offset: number) {
+    this.offset = offset;
   }
 
   public readString() {
@@ -68,6 +59,23 @@ export class BinaryReader {
   public readDouble() {
     const result = this.buffer.readDoubleLE(this.offset);
     this.offset += 8;
+
+    return result;
+  }
+
+  private decodeULEB128() {
+    let result = 0;
+    let shift = 0;
+    let length = 0;
+    let byte = 0x80;
+
+    for (; (byte & 0x80) !== 0; shift += 7) {
+      byte = this.buffer[this.offset + length];
+      result |= (byte & 0x7F) << shift;
+      length++;
+    }
+
+    this.offset += length;
 
     return result;
   }

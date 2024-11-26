@@ -11,6 +11,9 @@ export class GridShader extends Shader {
   public tint: glm.ReadonlyVec4;
   public count: glm.ReadonlyVec2;
   public density: glm.ReadonlyVec2;
+  public minmax: glm.ReadonlyVec2;
+  public filter: glm.ReadonlyVec2;
+  public mask: number | null;
   public zoom: number;
 
   constructor() {
@@ -23,6 +26,9 @@ export class GridShader extends Shader {
     this.tint = glm.vec4.create();
     this.count = glm.vec2.create();
     this.density = glm.vec2.create();
+    this.minmax = glm.vec2.create();
+    this.filter = glm.vec2.create();
+    this.mask = null;
     this.zoom = 0;
   }
 
@@ -68,8 +74,11 @@ export class GridShader extends Shader {
     gl.uniform2fv(gl.getUniformLocation(program, 'u_Offset'), this.offset);
     gl.uniform2iv(gl.getUniformLocation(program, 'u_Count'), this.count);
     gl.uniform2fv(gl.getUniformLocation(program, 'u_Density'), this.density);
+    gl.uniform2fv(gl.getUniformLocation(program, 'u_MinMax'), this.minmax);
+    gl.uniform2fv(gl.getUniformLocation(program, 'u_Filter'), this.filter);
     gl.uniform1f(gl.getUniformLocation(program, 'u_CellHalfSize'), 0.35);
     gl.uniform1f(gl.getUniformLocation(program, 'u_Zoom'), this.zoom);
+    gl.uniform1f(gl.getUniformLocation(program, 'u_Mask'), this.mask ?? NaN);
   }
 
   public setPositions(gl: WebGLContext, values: glm.vec3[]) {
@@ -126,7 +135,8 @@ export class GridShader extends Shader {
         height: countY,
         format: [gl.RED, gl.R32F],
         filter: gl.NEAREST,
-        wrap: gl.CLAMP_TO_EDGE
+        wrap: gl.CLAMP_TO_EDGE,
+        type: gl.FLOAT
       },
     );
   }
@@ -145,7 +155,8 @@ export class GridShader extends Shader {
         height: 1,
         format: [gl.RED, gl.R32F],
         filter: gl.LINEAR,
-        wrap: gl.CLAMP_TO_EDGE
+        wrap: gl.CLAMP_TO_EDGE,
+        type: gl.FLOAT
       },
     );
   }

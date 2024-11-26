@@ -58,7 +58,7 @@ export class AreaBounds {
   }
 }
 
-export function getMinMax(array: number[]): [number, number] {
+export function getMinMax(array: ArrayLike<number>): [number, number] {
   let len = array.length;
   let max = -Infinity;
   let min = +Infinity;

@@ -2,7 +2,7 @@ import { PatchData } from "./PatchData";
 
 export interface GridData extends PatchData {
   values: Float32Array;
-  mask: Uint8Array;
+  mask: number | null;
   countX: number;
   countY: number;
 }

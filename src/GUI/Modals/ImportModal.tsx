@@ -1,15 +1,14 @@
 import { MouseEventHandler, useCallback, useState } from "react"
 import { observer } from "mobx-react";
 import { useStore } from "../../Stores/RootStore";
-import { Patch } from "../../Data/Patch";
-import { parseGrid } from "../../Workers";
-import { parseInfo } from "../../Data/DataSources/StaticSource";
-import { LocalSource } from "../../Data/DataSources/LocalSource";
+import { GridPatch } from "../../Data/GridPatch";
+import { AreaBounds } from "../../Data/DataUtils";
+import { parseInfo } from "../../Data/DataSource";
 
 import Modal from "../Modal";
+import worker from "../../Workers/GridParser";
 
 import "./ImportModal.css";
-import { AreaBounds } from "../../Data/DataUtils";
 
 type Props = {
   isOpen: boolean,
@@ -24,12 +23,6 @@ type Progress = {
 const ImportModal = observer(({isOpen, onClose}: Props) => {
   const { dataStore } = useStore();
   const patchStore = dataStore.patchStore;
-
-  const localSource = patchStore.sources
-    .find(x => x instanceof LocalSource) as LocalSource;
-
-  if (!localSource)
-    throw Error("Missing requested DataSource");
 
   const [progress, setProgress] = useState<Progress>({
     total: 0,
@@ -54,12 +47,14 @@ const ImportModal = observer(({isOpen, onClose}: Props) => {
       }
 
       const array = await file.arrayBuffer();
-      const data = await parseGrid(array);
+      const data = await worker.parseGrid({info, array, includeData: true});
 
       const bounds = new AreaBounds(data.bounds);
-      const patch = new Patch(localSource, info, bounds);
+      const patch = new GridPatch(info);
+      patch.bounds = bounds;
+      patch.data = data;
 
-      localSource.storePatch(info, array);
+      await patchStore.store(patch);
 
       delete patch.data;
       dataStore.pushPatch(patch);
@@ -76,7 +71,7 @@ const ImportModal = observer(({isOpen, onClose}: Props) => {
     });
 
     e.preventDefault();
-  }, [localSource, dataStore]);
+  }, [dataStore, patchStore]);
 
   const onFileImport = useCallback(() => {
     const input = document.createElement("input");

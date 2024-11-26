@@ -21,8 +21,20 @@ type TextureParams = {
   format: TextureFormat,
   width: number,
   height: number,
-  filter: number,
-  wrap: number,
+  filter: GLenum,
+  wrap: GLenum,
+  type: GLenum
+};
+
+type ShaderAttribute = {
+  buffer: WebGLBuffer,
+  params: AttributeParams,
+};
+
+type ShaderTexture = {
+  texture: WebGLTexture,
+  params: TextureParams,
+  borrow: boolean
 };
 
 export type WebGLContext = WebGL2RenderingContext;
@@ -36,19 +48,8 @@ export abstract class Shader {
   private program: Program;
   private vao: WebGLVertexArrayObject;
 
-  protected attributes: {
-    [index: string]: {
-      buffer: WebGLBuffer,
-      params: AttributeParams,
-    }
-  };
-
-  protected textures: {
-    [index: string]: {
-      texture: WebGLTexture,
-      params: TextureParams,
-    }
-  };
+  protected attributes: Record<string, ShaderAttribute>;
+  protected textures: Record<string, ShaderTexture>;
 
   constructor(program: Program) {
     this.program = program;
@@ -102,7 +103,11 @@ export abstract class Shader {
     // Delete textures
     for (const index in this.textures) {
       const value = this.textures[index];
-      gl.deleteTexture(value.texture);
+      // Borrowed textures are deleted
+      // by shaders who own them
+      if (!value.borrow) {
+        gl.deleteTexture(value.texture);
+      }
       delete this.textures[index];
     }
   }
@@ -127,6 +132,9 @@ export abstract class Shader {
       const texture = value.texture;
       const params = value.params;
 
+      // Skip if the uniform location is not found
+      if (params.index === -1) return;
+
       gl.uniform1i(params.index, i);
       gl.activeTexture(gl.TEXTURE0 + i);
       gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -143,6 +151,35 @@ export abstract class Shader {
   public unbind(gl: WebGLContext) {
     // Unbind vertex array object
     gl.bindVertexArray(null);
+  }
+
+  /**
+   * Borrows a texture from another shader program.
+   *
+   * @param shader - The shader program to borrow the texture from.
+   * @param name - The name of the texture to borrow.
+   */
+  public borrowTexture(gl: WebGLContext, shader: Shader, name: string) {
+    this.textures[name] = {
+      ...shader.textures[name],
+      params: {
+        ...shader.textures[name].params,
+        index: gl.getUniformLocation(this.getProgram(), name)!
+      },
+      borrow: true,
+    };
+  }
+
+  /**
+   * Swaps the textures of this shader program.
+   *
+   * @param srcName - The name of the source texture.
+   * @param dstName - The name of the destination texture.
+   */
+  public swapTextures(srcName: string, dstName: string) {
+    const src = this.textures[srcName];
+    const dst = this.textures[dstName];
+    [dst.texture, src.texture] = [src.texture, dst.texture];
   }
 
   /**
@@ -195,7 +232,7 @@ export abstract class Shader {
    * @param params - An object containing texture parameters.
    * @throws Throws an error if the texture object cannot be created.
    */
-  protected setTextureData(gl: WebGLContext, values: Float32Array, params: TextureParams) {
+  protected setTextureData(gl: WebGLContext, values: ArrayBufferView | null, params: TextureParams) {
     // Retrieve the texture from the map or create a new one if it doesn't exist
     const texture = this.textures[params.name]?.texture ?? gl.createTexture();
     if (!texture) throw Error("An error occurred while creating a texture object");
@@ -221,7 +258,7 @@ export abstract class Shader {
       params.height,      // Height of the texture
       0,                  // Border width (always zero)
       params.format[0],   // Format of the pixel data
-      gl.FLOAT,           // Type of the pixel data
+      params.type,        // Type of the pixel data
       values              // Pixel data
     );
 
@@ -232,6 +269,6 @@ export abstract class Shader {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, params.wrap);
 
     // Store the texture and its parameters
-    this.textures[params.name] = { texture, params };
+    this.textures[params.name] = { texture, params, borrow: false };
   }
 }

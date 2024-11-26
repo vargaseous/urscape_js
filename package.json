@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run generate-manifest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "generate-manifest": "node --no-warnings --loader ts-node/esm ./build/generate-manifest.ts",
     "preview": "vite preview"
   },
   "dependencies": {
+    "comlink": "^4.4.1",
+    "geotiff": "^2.1.3",
     "lru-cache": "^11.0.0",
     "maplibre-gl": "^4.3.2",
     "mobx": "^6.12.5",
@@ -32,6 +35,8 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "glob": "^11.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }

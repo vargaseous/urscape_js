@@ -8,8 +8,9 @@
   border: 0.5px solid rgb(255, 255, 255);
   background-color: black;
 }
+
 .left-layers {
-  height:80% ;
+  height: 80%;
 }
 
 .left-locations {
@@ -31,44 +32,264 @@
   border-top: 0.5px solid rgb(255, 255, 255);
   border-bottom: 0.5px solid rgb(255, 255, 255);
 }
+
 .container-layers {
-  /* top: 30px;
-  padding-top: 5px; */
-  overflow: scroll;
-  height: calc(100% - 71px);
+  padding-top: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 76px);
 }
+
 .container-sites {
-  /* top: 30px;
-  padding-top: 5px; */
-  overflow: scroll;
-  height: calc(100% - 36px); ;
+  padding-top: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 41px);
+}
+
+.data-layer {
+  display: flex;
+  flex-direction: row;
+  width: 94%;
+  border-radius: 11px;
+  margin: 3%;
+  background-color: transparent;
+}
+
+.site-button {
+  display: flex;
+  background-color: transparent;
+  border: 0px solid;
+  cursor: pointer;
+  width: 94%;
+  border-radius: 11px;
+  margin: 3%;
+  padding-left: 6%;
+  justify-content: left;
+  align-items: left;
+  color: white;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .layer-button {
-    display: flex;
-    width: 180px;
-    border-radius:50px;
-    background-color: black;
-    border: 0px solid;
-    color: white;
-    padding: 5px;
-    padding-left: 15px;
-    margin: 7px;
-    cursor: pointer;
-    justify-content: left;
-    align-items: left;
-    font-size: 12px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border: 0px solid;
+  cursor: pointer;
+  justify-content: left;
+  align-items: left;
+  color: white;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
+}
+
+.active {
+  margin-left: 30px;
+  margin-right: 60px;
+  padding-left: 0px;
+}
+
+.nonactive {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 30px;
+}
+
+.collapsed {
+  height: 22px;
+}
+
+.expanded {
+  height: 100px;
+}
+
+.lb-color {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background-color: rgb(171, 48, 68);
+  left: 13px;
+  margin-top: 5px;
+  border: none;
+  /* Remove the border */
+  border-radius: 50%;
+  /* Make it a circle */
+  cursor: pointer;
+  z-index: 2;
+}
+
+.lb-filter {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  right: 30px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.lb-info {
+  position: absolute;
+  width: 20px;
+  margin-top: 2px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  right: 11px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.color-container {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  /* We want it big, we want it full */
+  height: 70px;
+  /* Let it adjust, let it be flexible */
+}
+
+.info-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  /* Optional: space between rows */
+  margin-top: 27px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 100%;
+  /* We want it big, we want it full */
+  height: 70px;
+  /* Let it adjust, let it be flexible */
+  color: lightgray;
+  font-size: 11px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: transparent 0px solid;
+}
+
+.info-input {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  /* Ensures the text color remains consistent with surrounding text */
+  outline: none;
+  /* Removes the default focus outline */
+}
+
+.info-label {
+  text-align: left;
+  /* Align labels to the right */
+  padding-right: 10px;
+  /* Optional: space between label and input */
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  /* Align items vertically */
+}
+
+.color-button {
+  background-color: rgb(171, 48, 68);
+  border: none;
+  /* Remove the border */
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  /* Make it a circle */
+  margin: 5px;
+  /* Optional: adds space between buttons */
+  cursor: pointer;
+}
+
+.layer-button:hover {
+  color: rgb(185, 185, 185);
+}
+
+.hide {
+  display: none;
+}
+
+.slider-container {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 0px;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+}
+
+.layer-button:disabled {
+  color: grey;
+}
+
+.icon {
+  width: 13px;
+  height: 13px;
+  color: aquamarine;
+}
+
+/* Section for spinner icons */
+@font-face {
+  font-family: 'icomoon';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMghi9pwAAAC8AAAAYGNtYXAgVsCNAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5ZqNqZaUAAAF4AAAIFGhlYWQaRAp1AAAJjAAAADZoaGVhA+IB7AAACcQAAAAkaG10eBEAADQAAAnoAAAALGxvY2EGkAkoAAAKFAAAABhtYXhwABgA0AAACiwAAAAgbmFtZZlKCfsAAApMAAABhnBvc3QAAwAAAAAL1AAAACAAAwHgAZAABQAAAUwBZgAAAEcBTAFmAAAA9QAZAIQAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADgBgHg/+AAIAHgACAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg4Ab//f//AAAAAAAg4AD//f//AAH/4yAEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAAIABwAAAHgAeAACwAXACMALwBIAGEAegCGAAATNDYzMhYVFAYjIiYXNDYzMhYVFAYjIiYXNDYzMhYVFAYjIiYHNDYzMhYVFAYjIiYHOAExNDYzMhYVOAExOAExFAYjIiY1OAExJzgBMTQ2MzIWFTgBMTgBMRQGIyImNTgBMQM4ATE0NjMyFhU4ATE4ATEUBiMiJjU4ATEHNDYzMhYVFAYjIibAJRsbJSUbGyWIJRsaJiYaGyVYEw0NExMNDRM4Ew0NExMNDROIEw0NExMNDROIEw0NExMNDRMQHBQUHBwUFBwsFQ8PFRUPDxUBoBslJRsbJSUdGiYmGhslJW0NExMNDRMTew0TEw0NExMrDRMTDQ0TEw04DRMTDQ0TEw0BEBQcHBQUHBwUiA8VFQ8PFRUAAgAQ//gCAAHYADoAcgAAJTQmJy4BJy4BJy4BByIGBw4BBw4BBw4BFxQWFx4BFx4BFx4BNzI2Nz4BNz4BNz4BNzoBMTI2NTwBNTEHDgEHDgEHDgEnIiYnLgEnLgEnLgE3NDY3PgE3PgE3PgEXMhYXHgEXHgEXHgEHMRwBFRQWFw4BBwIACwoKHRISKRcXMRgYMBYWKBEQGgkICQELCQkbEREnFRYtFxcsFRUlDxAYCAUGAgEBDRMzCRkPECUUFCoVFSoTEyMODhcHCAcBCQkIFw8OIhMSJxQUJhISHw4NFAcHBwERDAMIBeAZMRcXKRERGwkJCQELCgkcERIoFhcuGBguFRYmEBAZCAkIAQoJChoQECYUDRoNEw0BAQFVFCQPDhgHCAgBCggJGA8PIxQTKRQUKBMSIQ4OFgcHBwEJCAgWDg4hEhIlEwEBAQwSAQ4ZDAAAAAUAAP/gAgAB3gANABsAJAAsADsAADc0NjUnDgEVFBYXNy4BJRQGBxc+ATU0JicHFBYnHgEXNy4BJxUHPgE3NQ4BBwUOASMiJicHHgEzMjY3J2ABXAMCLCU5FBYBQBYUOSUsAgNcAYAiOBFdHGpCqxE4IkJqHAEqDyESEiEPORs+IiI+GzngBQkEHgwYDDdhI08VOB8fOBVPI2E3DBgMHgQJmAcpHh46TwhhTh4pB2EITzr/BwcHB04PEREPTgAAAAMAAP/gAgAB4AAbACcASgAAASIHDgEHBhUUFx4BFxYzMjc+ATc2NTQnLgEnJgcyFhUUBiMiJjU0NhMOASMiJicuATU0NjcXOAExBhQXHgEzMjY3NjQnNx4BFRQGAQA1Ly5GFBQUFEYuLzU1Ly5GFBQUFEYuLzU1S0s1NUtLzh9PKytPHx4hIR4iMTEYPSIiPRgxMSIeISEB4BQURi4vNTUvLkYUFBQURi4vNTUvLkYUFIBLNTVLSzU1S/7nHiEhHh9PKytPHyIxjDEYGRkYMYwxIh9PKytPAAIAAP/gAgAB4AAhAEMAAAEiBw4BBwYHNjc+ATc2MzIXHgEXFhUUFjMyNjU0Jy4BJyYDMjc+ATc2NwYHDgEHBiMiJy4BJyY1NCYjIgYVFBceARcWAQA0Li5GFBUBAREROCUmKismJjgREBwUFBwUFEYuLzU0Li5GFBUBAREROCUmKismJjgREBwUFBwUFEYuLwHgFBNELS40LSgoOxEREhE9KSkuFBwcFDUvLkYUFP4AFBNELS40LSgoOxEREhE9KSkuFBwcFDUvLkYUFAAAAAABAAD/4AIAAeAALQAAASM3LgEjIgYHDgEVFBYXHgEzMjY3PgE3Fw4BIyInLgEnJjU0Nz4BNzYzMhYXNwIAwEgbRyYmRxsbHR0bG0cmJkcbAgQCMSRjOjUvLkYUFBQURi4vNTVdI0sBIEgbHR0bG0cmJkcbGx0dGwMEAysoLxQURi4vNTUvLkYUFCgjSwAAAAAMAAj/7gHvAd4ADQAbAC0APwBQAGIAcACFAJcAqQC7AM0AAAEiJj0BNDYzMhYdARQGAyImPQE0NjMyFh0BFAYDIiYvASY2NzYWHwEWBgcOASMTIiYvASY2NzYWHwEWBgcOASMnIiYvAS4BNz4BHwEeAQcOAQUiJi8BLgE3PgEfAR4BBw4BIyUjIiY1NDY7ATIWFRQGJTgBMSMiJjU0NjM4ATEzMhYVFAYjBSImJyY2PwE2FhcWBg8BDgEjJSImJyY2PwE2FhcWBg8BDgEjAyImJy4BPwE+ARceAQ8BDgEjEyImJy4BPwE+ARceAQ8BDgEjAQAMEhIMDBISDAgLCwgICwtLBw0ELQYGCgoXBS0GBgoDCAOzBAgDLAQEBgYNBCwEBAYCBALkBAYDTgkGBgUVCU4JBgYDDQEwAgQCTQYDAwMMBk0GAwMCBwT+uFoKDg4KWgoODgFcWgYJCQZaBgkJBv5eBgoDBQUITggRBQUFCE4CBgMBNgQHAgMDBk0GDAMDAwZNAgQC5AMFAggEBC0EEQcHBQQtAwoFswIEAQYDAy0DDAUGAwMtAgcEAUgSDFoMEhIMWgwS/qYKCFoHCwsHWggKAUoIBk4KFgYGBgpOChYGAgL+1QUETQYOAwQEBk0GDgMCAfwCAiwGFQkJBgUtBhUJBgeoAQEtAwwFBgMDLQMMBQQEZw4KCg4OCgoOCQkGBgkJBgYJdwYFCBIELQUFCAgSBSwCAboEBAUMAy0DAwYFDAMtAQH+9gEBBRAHTgcFBQQQCE0FBQE7AQEDDAZNBgMDAwwGTQQEAAAAAQAAAAEAAAe3Z1NfDzz1AAsCAAAAAADckmTcAAAAANySZNwAAP/gAgAB4AAAAAgAAgAAAAAAAAABAAAB4P/gAAACAAAAAAACAAABAAAAAAAAAAAAAAAAAAAACwIAAAAAAAAAAAAAAAEAAAACAAAcAgAAEAIAAAACAAAAAgAAAAIAAAACAAAIAAAAAAAKABQAHgC2AWABwAIsApQC3AQKAAEAAAALAM4ADAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAHAAAAAQAAAAAAAgAHAGAAAQAAAAAAAwAHADYAAQAAAAAABAAHAHUAAQAAAAAABQALABUAAQAAAAAABgAHAEsAAQAAAAAACgAaAIoAAwABBAkAAQAOAAcAAwABBAkAAgAOAGcAAwABBAkAAwAOAD0AAwABBAkABAAOAHwAAwABBAkABQAWACAAAwABBAkABgAOAFIAAwABBAkACgA0AKRpY29tb29uAGkAYwBvAG0AbwBvAG5WZXJzaW9uIDEuMABWAGUAcgBzAGkAbwBuACAAMQAuADBpY29tb29uAGkAYwBvAG0AbwBvAG5pY29tb29uAGkAYwBvAG0AbwBvAG5SZWd1bGFyAFIAZQBnAHUAbABhAHJpY29tb29uAGkAYwBvAG0AbwBvAG5Gb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-spinner:before {
+  content: "\e000";
+}
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0);
   }
-  .active {
-    background-color:rgb(64, 64, 64);
-    color: white;
+
+  100% {
+    transform: rotate(360deg);
   }
+}
 
-  .layer-button:hover {
-    color: grey;
-  }
+.spinner {
+  font-size: 15px;
+  width: 15px;
+  height: 15px;
+  left: 11px;
+  margin-top: 2.5px;
+  position: absolute;
+  animation: anim-rotate 1s infinite linear;
 
+}
 
-
-
+.spinner--steps {
+  animation: anim-rotate 1s infinite steps(8);
+}

@@ -21,7 +21,7 @@ const Modal = observer(({ isOpen, onClose, children }: Props) => {
       className="modal-dialog"
     >
       <div className="modal-header">
-        <h2 id="modal-title">Import Dialog</h2>
+        <h4 id="modal-title" className="modal-title">Import Dialog</h4>
         <button onClick={onClose} className="modal-close">
           <span aria-hidden="true">&times;</span>
         </button>

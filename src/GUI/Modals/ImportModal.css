@@ -5,19 +5,19 @@
 
 .import-button {
   display: flex;
-  margin: 10px 7px;
-  padding: 10px 10px;
-  background-color: black;
+  margin: 10px 10px;
+  padding: 10px 15px;
+  background-color: rgb(255, 255, 255);
   border: 0px solid;
-  color: white;
+  color: rgb(3, 3, 3);
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 12px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .import-button:hover {
-  border-radius: 10px;
+  border-radius:10px;
   background-color: rgb(64, 64, 64);
 }
