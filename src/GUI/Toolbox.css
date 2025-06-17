@@ -5,7 +5,7 @@
   height: 20%;
   width: calc(100% - 200px);
   background-color: black;
-  border: 0.5px solid rgb(255, 255, 255);
+  border: 0.5px solid #444444;;
 }
 
 .toolbox-panel {
@@ -17,14 +17,15 @@
 .toolbox-panel-header {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid #444444;;
 }
 
 .toolbox-panel-tabs {
-  color: rgb(255, 255, 255);
+  color: white;
   display: flex;
   height: 100%;
   flex-direction: row;
+  background-color: #212121;;
 }
 
 
@@ -32,26 +33,42 @@
   color: white;
   margin: 0 0 10px 0;
   height: 100%;
-  border: 0px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
-  padding-left: 5px;
-  padding-right: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 12px;
+  border: 0px solid #444444;;
+  border-right: 1px solid #444444;;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.9em;;
+}
+
+.toolbox-panel-tab:hover {
+  color: white;
+  background-color: #333333;
+  cursor: pointer;
+  margin: 0 0 10px 0;
+  height: 100%;
+  border: 0px solid #444444;;
+  border-right: 1px solid #444444;;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.9em;
+  transition-duration: 300ms;
+  transition-behavior: ease-in-out;
 }
 
 .toolbox-panel-tab-active {
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: rgb(0, 0, 0);
   margin: 0 0 10px 0;
   height: 100%;
-  border: 0px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
+  border: 0px solid #444444;;
+  border-right: 1px solid #444444;;
   border-bottom: 1px solid rgb(0, 0, 0);
-  padding-left: 5px;
-  padding-right: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.9em;;
 }
 
 .toolbox-panel-content {
@@ -59,6 +76,7 @@
   justify-content: left;
   align-items: center;
   height: 100%;
+  margin-left: 12px;
 }
 
 .toolbox-panel-content-item {
@@ -70,39 +88,47 @@
 
 .toolbox-icon {
  
-  width :10vh;
-  height :10vh;
+  width :8vh;
+  height :8vh;
   background-color: rgb(0, 0, 0);
-  margin-bottom : 5px;
+  margin-bottom : 10px;
 }
 .toolbox-button {
-  margin-left: 13px;
+  margin-left: 12px;
+  margin-right: 12px;
   color: aliceblue;
   border: 0px solid;
   background-color: rgb(0, 0, 0);
   display: flex; /* Enable flexbox */
   flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center-align content horizontally */
+  align-items: center; /* Align content to the baseline */
   cursor: pointer; /* Optional: Add a pointer cursor for better UX */
+  font-size: 0.9em;
 }
 .close-button {
-
   color: aliceblue;
   border: 0px solid;
-  background-color:rgb(0, 0, 0);
-
-  align-items: right; /* Center-align content horizontally */
+  background-color: transparent;
+  align-items: right; /*;
   cursor: pointer; /* Optional: Add a pointer cursor for better UX */
+  font-size: 0.5em;
+  padding-left: 1em;
+  position: relative;
+  top: -2px;
 }
  
 .placeholder {
-  color: rgb(255, 255, 255);
+  color: white;
   padding-left: 5px;
   padding-right: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Helvetica', Arial, sans-serif;
   font-size: 12px;
 }
 
 .disabled {
 display: none;
+}
+
+.tab_string {
+  margin-top: 10px;
 }

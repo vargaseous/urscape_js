@@ -110,7 +110,7 @@ const Gui = observer(() => {
     return (
       <>
         <button className="layer-button" onClick={openImport} disabled={patchStore.loading}>
-          + Add new layer  {patchStore.loading ? "(Loading...)" : ""}
+          +&nbsp;&nbsp;Add new layer  {patchStore.loading ? "(Loading...)" : ""}
         </button>
         <ImportModal isOpen={importOpen} onClose={closeImport} />
       </>
@@ -122,13 +122,13 @@ const Gui = observer(() => {
       <>
         <div className="left-panel">
           <div className="left-layers">
-            <div className="header">{"DataLayers"}</div>
+            <div className="header">{"Data Layers"}</div>
             <div className="left-import"> {addImport()} </div>
             <div className="container-layers">
               {dataLayers.map((layer, index) => addLayerButton(layer, index))}
             </div>
             <div className="left-locations">
-              <div className="header">{"Locations"}</div>
+              <div className="header">{"Site Browser"}</div>
               <div className="container-sites">
                 {sites.map((site, index) => addSiteButton(site, index))}
               </div>

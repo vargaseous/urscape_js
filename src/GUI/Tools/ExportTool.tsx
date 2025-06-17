@@ -13,10 +13,10 @@ const ExportTool = observer(({ active }: { active: boolean }) => {
   return active && (
     <>
       <div className="toolbox-panel-content-item">
-        <button onClick={() => saveScreenshot()}>Screenshot</button>
+        <button className="import-button" onClick={() => saveScreenshot()}>Screenshot</button>
       </div>
       <div className="toolbox-panel-content-item">
-        <button onClick={() => exportTIFF()}>Export TIFF</button>
+        <button className="import-button" onClick={() => exportTIFF()}>Export TIFF</button>
       </div>
     </>
   )

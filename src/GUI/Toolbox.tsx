@@ -94,7 +94,7 @@ const addTab = useCallback((tab: Tab) => {
                   key={index} 
                   onClick={() => setTabIndex(index)}
                 >
-                  {tab.name}
+                  <div className="tab_string">{tab.name}
                   {tab.closeable && (
                     <button 
                       className="close-button"
@@ -103,9 +103,10 @@ const addTab = useCallback((tab: Tab) => {
                         handleCloseTab(index);
                       }}
                     >
-                      X
+                      ⨉
                     </button>
                   )}
+                  </div>
                 </div>
               );
             })}
